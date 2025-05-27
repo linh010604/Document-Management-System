@@ -1,0 +1,9 @@
+docker build -f user_management/Dockerfile.users -t user_management ./user_management
+docker build -f document_management/Dockerfile.docs -t document_management ./document_management
+docker build -f document_searching/Dockerfile.search -t document_searching ./document_searching
+docker build -f logging_service/Dockerfile.logs -t logging_service ./logging_service
+
+docker run -d --name micro1 --net nguy1132 -p 9000:5000 user_management
+docker run -d --name micro2 --net nguy1132 -p 9001:5001 document_management
+docker run -d --name micro3 --net nguy1132 -p 9002:5002 document_searching
+docker run -d --name micro4 --net nguy1132 -p 9003:5003 logging_service
